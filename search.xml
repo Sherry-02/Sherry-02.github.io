@@ -555,9 +555,9 @@
   </entry>
   <entry>
     <title>springboot与缓存相关信息</title>
-    <url>/2021/03/16/SpringBoot/</url>
+    <url>/2021/04/15/springboot%E4%B8%8E%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/</url>
     <content><![CDATA[<h1 id="springboot高级"><a href="#springboot高级" class="headerlink" title="springboot高级"></a>springboot高级</h1><hr>
-<p>本文分别从缓存、消息、检索、任务、安全、分布式、热部署和监控管理方面，对spring boot高级部分做了简单总结，内容不深但覆盖全。</p>
+<p>本文分别从缓存、消息、检索、任务、安全、分布式、热部署和监控管理方面，对spring boot高级部分做了简单总结，内容不深但覆盖全面。</p>
 <h1 id="一-Spring-Boot与缓存"><a href="#一-Spring-Boot与缓存" class="headerlink" title="(一) Spring Boot与缓存"></a>(一) Spring Boot与缓存</h1><h2 id="一、-JSR107"><a href="#一、-JSR107" class="headerlink" title="一、 JSR107"></a>一、 JSR107</h2><p>Java Caching定义了5个核心接口</p>
 <ul>
 <li><p>CachingProvider</p>
