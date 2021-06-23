@@ -566,7 +566,12 @@
 <p>说明@Scheduled注解，支持三种调度方式：</p>
 <p>cron表达式（”cron” expression）、固定频率（fixedRate）、固定延时（fixedDelay）</p>
 <p>核心类摘要：</p>
-<p>1.ScheduledAnnotationBeanPostProcessor<br>2.ScheduledTaskRegistrar<br>3.TaskScheduler<br>4.ReschedulingRunnable</p>
+<ol>
+<li>ScheduledAnnotationBeanPostProcessor</li>
+<li>ScheduledTaskRegistrar</li>
+<li>TaskScheduler</li>
+<li>ReschedulingRunnable</li>
+</ol>
 <h2 id="ScheduledAnnotationBeanPostProcessor"><a href="#ScheduledAnnotationBeanPostProcessor" class="headerlink" title="ScheduledAnnotationBeanPostProcessor"></a>ScheduledAnnotationBeanPostProcessor</h2><p>ScheduledAnnotationBeanPostProcessor是@scheduled注解处理类，实现BeanPostProcessor接口（postProcessAfterInitialization方法实现注解扫描和类实例创建）、ApplicationContextAware接口（setApplicationContext方法设置当前ApplicationContext）、org.springframework.context.ApplicationListener（观察者模式，onApplicationEvent方法会被回调）。</p>
 <p>该类的定义如下图：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.scheduling.annotation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScheduledAnnotationBeanPostProcessor</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">MergedBeanDefinitionPostProcessor</span>, <span class="title">DestructionAwareBeanPostProcessor</span>,</span></span><br><span class="line"><span class="class">        <span class="title">Ordered</span>, <span class="title">EmbeddedValueResolverAware</span>, <span class="title">BeanNameAware</span>, <span class="title">BeanFactoryAware</span>, <span class="title">ApplicationContextAware</span>,</span></span><br><span class="line"><span class="class">        <span class="title">SmartInitializingSingleton</span>, <span class="title">ApplicationListener</span>&lt;<span class="title">ContextRefreshedEvent</span>&gt;, <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -575,7 +580,17 @@
 
 
 <p>会发现ScheduledAnnotationBeanPostProcessor足足实现了9个生命周期有关的接口类。</p>
-<p>1.ApplicationContextAware的setApplicationContext,EmbeddedValueResolverAware的setEmbeddedValueResolver<br>2.MergedBeanDefinitionPostProcessor的postProcessMergedBeanDefinition<br>3.BeanNameAware,BeanFactoryAware<br>4.BeanPostProcessor的postProcessAfterInitialization<br>6.SmartInitializingSingleton的afterSingletonsInstantiated<br>6.DestructionAwareBeanPostProcessor的requiresDestruction<br>7.ApplicationListener<ContextRefreshedEvent>的事件<br>8.DestructionAwareBeanPostProcessor的requiresDestruction<br>9.DisposableBean的destroy</p>
+<ol>
+<li>ApplicationContextAware的setApplicationContext,EmbeddedValueResolverAware的setEmbeddedValueResolver</li>
+<li>MergedBeanDefinitionPostProcessor的postProcessMergedBeanDefinition</li>
+<li>BeanNameAware,BeanFactoryAware</li>
+<li>BeanPostProcessor的postProcessAfterInitialization</li>
+<li>SmartInitializingSingleton的afterSingletonsInstantiated</li>
+<li>DestructionAwareBeanPostProcessor的requiresDestruction</li>
+<li>ApplicationListener<ContextRefreshedEvent>的事件</li>
+<li>DestructionAwareBeanPostProcessor的requiresDestruction</li>
+<li>DisposableBean的destroy</li>
+</ol>
 <p>我们关注的重点便是：在bean初始化之后的@Scheduled以及@Schedules 注解的解析</p>
 <p>先看看一个bean在初始化之后步骤。</p>
 <p> postProcessAfterInitialization扫描所有@scheduled注解，区分cronTasks、fixedDelayTasks、fixedRateTasks。</p>
@@ -589,8 +604,8 @@
 
 <p>上面的这个方法可以分为两个大的步骤：</p>
 <ol>
-<li> 解析@Scheduled注解中的内部属性，然后创建定时任务，然后加入到任务列表中；</li>
-<li> 将任务保存在内部的一个bean与其相关的定时任务方法集合scheduledTasks中。</li>
+<li>解析@Scheduled注解中的内部属性，然后创建定时任务，然后加入到任务列表中；</li>
+<li>将任务保存在内部的一个bean与其相关的定时任务方法集合scheduledTasks中。</li>
 </ol>
 <p>而这里的第一步又分了4个属性的解析。</p>
 <ol>
