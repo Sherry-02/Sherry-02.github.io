@@ -1,4 +1,4 @@
-@keyframes link_custom {
+<script src="\assets\js\APlayer.min.js"> </script>@keyframes link_custom {
     from {
         box-shadow: 0 0 5px var(--primary-color, grey), inset 0 0 5px var(--primary-color, grey), 0 1px 0 var(--primary-color, grey)
     }
