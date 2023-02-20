@@ -1,0 +1,414 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>分布式事务概述 | Sherly的奇幻漂流</title><meta name="keywords" content="分布式,事务,ACID,CAP,BASE"><meta name="author" content="Sherly"><meta name="copyright" content="Sherly"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="在产品的一步步完善和升级过程中，事务由单体事务逐步发展为多数据源事务，再慢慢一步步发展为分布式事务的过程，以及出现的需要解决的问题，和解决问题的方案中所保持的一些平衡关系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式事务概述">
+<meta property="og:url" content="http://sherry-02.github.io/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="Sherly的奇幻漂流">
+<meta property="og:description" content="在产品的一步步完善和升级过程中，事务由单体事务逐步发展为多数据源事务，再慢慢一步步发展为分布式事务的过程，以及出现的需要解决的问题，和解决问题的方案中所保持的一些平衡关系">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://sherry-02.github.io/userImg/gunner.jpg">
+<meta property="article:published_time" content="2023-02-18T08:12:16.000Z">
+<meta property="article:modified_time" content="2023-02-20T07:50:51.216Z">
+<meta property="article:author" content="Sherly">
+<meta property="article:tag" content="事务">
+<meta property="article:tag" content="分布式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://sherry-02.github.io/userImg/gunner.jpg"><link rel="shortcut icon" href="/userImg/zmftl.jpeg"><link rel="canonical" href="http://sherry-02.github.io/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-20 15:50:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="/userCss/flink.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/userImg/zmftl.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 分组</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/userImg/gunner.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Sherly的奇幻漂流</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 分组</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">分布式事务概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-18T08:12:16.000Z" title="发表于 2023-02-18 16:12:16">2023-02-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-20T07:50:51.216Z" title="更新于 2023-02-20 15:50:51">2023-02-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h2 id="事务的转变过程"><a href="#事务的转变过程" class="headerlink" title="事务的转变过程"></a>事务的转变过程</h2><p><strong>单点项目 - 单数据源事务</strong></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/single.png" alt="taskImg"></p>
+<p>在单体项目中如果只有一个数据库是不存在分布式事务问题的，<br><font color=red>通过@Transactional事务管理器就可以管理单数据库事务</font></p>
+<p><strong>单点项目 - 多数据源事务</strong></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/multi.png" alt="taskImg"></p>
+<p>单体项目中如果有多个数据源时，每个数据源都有自己独立的事务管理器，所以会存在事务问题（同一个方法中调用到了两个数据源）<br><font color=red>轻量级解决方案：使用JTA+Atomikos解决单体项目多数据源事务</font></p>
+<p><strong>微服务项目事务</strong></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/fbssw.png" alt="taskImg"></p>
+<p>在微服务项目中，每个微服务应用都可能会有自己的数据库，<font color=red> @Transactional </font>是无法跨服务的，就会存在分布式事务的问题。</p>
+<p>在<font color=red>微服务</font>环境下，因为会根据不同的业务会拆分成不同的服务，比如会员服务、订单服务、积分服务等，让专业的人做专业的事情，每个服务都有自己独立的数据库，并且是独立运行，互不影响。服务与服务之间通讯采用RPC远程调用技术，但是每个服务中都有自己独立的数据源，即自己独立的本地事务。两个服务相互通讯的时候，两个本地事务互不影响，从而出现分布式事务产生的原因。</p>
+<h2 id="事务理论知识"><a href="#事务理论知识" class="headerlink" title="事务理论知识"></a>事务理论知识</h2><h3 id="ACID理论"><a href="#ACID理论" class="headerlink" title="ACID理论"></a><font color=blue>ACID理论</font></h3><p>数据库管理系统中事务(transaction)的四个特性（分析时根据首字母缩写依次解释）：</p>
+<ul>
+<li><font color=blue>原子性</font>（Atomicity）</li>
+</ul>
+<p>原子性是指事务是一个不可再分割的工作单元，事务中的操作要么都发生，要么都不发生</p>
+<ul>
+<li><font color=blue>一致性</font>（Consistency）</li>
+</ul>
+<p>一致性是指在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏。这是说数据库事务不能破坏关系数据的完整性以及业务逻辑上的一致性</p>
+<ul>
+<li><font color=blue>隔离性</font>（Isolation）</li>
+</ul>
+<p>多个事务并发访问时，事务之间是隔离的，一个事务不应该影响其它事务运行效果。</p>
+<ul>
+<li><font color=blue>持久性</font>（Durability）</li>
+</ul>
+<p>这是最好理解的一个特性：持久性，意味着在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚。（完成的事务是系统永久的部分，对系统的影响是永久性的，该修改即使出现致命的系统故障也将一直保持）</p>
+<h3 id="CAP理论"><a href="#CAP理论" class="headerlink" title="CAP理论"></a><font color=red>CAP理论</font></h3><p>由于对系统或者数据进行了拆分，我们的系统不再是单机系统，而是分布式系统，针对分布式系统的CAP理论包含如下三个元素：</p>
+<h4 id="C-一致性（Consistency）"><a href="#C-一致性（Consistency）" class="headerlink" title="C:一致性（Consistency）"></a><font color=red>C:一致性（Consistency）</font></h4><p>一致性是指，一旦客户端将值写入任何一台服务器并获得响应，那么之后任意客户端从任意服务器读取的都是刚刚新写入的数据。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/consistency-1.png" alt="taskImg"></p>
+<p>一致性保证了：不管向哪台服务器写入数据，其他的服务器能实时同步这个新数据，之后不管从哪个服务器读取数据得到的都是最新的数据。如果同步有问题，那么首先解决同步的问题，挂起请求等待同步完成后才响应，那么可能是延迟很久才得到了正确结果，也可能是请求异常或者结果异常。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/consistency-2.png" alt="taskImg"></p>
+<h4 id="A-可用性（Availability）"><a href="#A-可用性（Availability）" class="headerlink" title="A:可用性（Availability）"></a><font color=red>A:可用性（Availability）</font></h4><p>可用性是指，向任意未崩溃的服务器发送请求，总能保证收到响应数据（允许不是最新数据）</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/availability.png" alt="taskImg"></p>
+<h4 id="P-分区容错性（Partition-tolerance）"><a href="#P-分区容错性（Partition-tolerance）" class="headerlink" title="P: 分区容错性（Partition tolerance）"></a><font color=red>P: 分区容错性（Partition tolerance）</font></h4><p><strong>分区的概念</strong>是：在分布式系统中，不同的节点分布在不同的子网络中，由于一些特殊的原因，这些子节点之间出现了网络不通的状态，但他们的内部子网络是正常的。从而导致了整个系统的环境被切分成了若干个孤立的区域。这就是分区。</p>
+<p>分布式系统在遇到任何网络分区故障的时候，仍然能够对外提供满足一致性或可用性的服务。比如两个服务器，给对方任何消息都可以失败；也就是说会因为各种意外情况，导致无法成功进行数据同步，分布式系统要能容忍这种情况。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/partitiontolerance.png" alt="taskImg"></p>
+<h4 id="CAP的取舍"><a href="#CAP的取舍" class="headerlink" title="CAP的取舍"></a><font color=purple>CAP的取舍</font></h4><p>传统的单机系统满足CA，而没有P。在分布式系统中，首先必须要满足P（分布式系统，因为是多节点的，一定要考虑part failure），所以C，A需要根据具体场景进行取舍。</p>
+<p>通过一个示例来梳理，如整个系统由服务节点A、B组成，之间通过网络通信，当节点 A 进行更新数据操作的时候，需要同时更新节点 B 的数据（这个数据复制的过程是一个原子操作）。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/cap-1.png" alt="taskImg"></p>
+<p>上图这个系统怎么满足 CAP 呢？通过反证法来梳理： 假设可以同时满足一致性、可用性、分区容错这三个特性，由于满足分区容错，可以切断 A、B两个服务节点间的通信</p>
+<ul>
+<li>A、B连接断开后，就出现了网络分区，因为节点 A、B无法通信，一致性就无法满足。</li>
+<li>如果强行满足一致性，就必须停止提供服务,修复A、B的通信故障，从而放弃可用性。</li>
+</ul>
+<p>总结来看：</p>
+<ul>
+<li>若要保证一致性：则必须进行节点间数据复制，复制期间数据锁定，导致期间的读取失败或超时，破坏了可用性；</li>
+<li>若要保证可用性：则不允许节点间数据复制时被锁定，这又破坏了一致性。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">组合</th>
+<th align="left">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">AC</td>
+<td align="left">单机应用 满足一致性和可用性，没有分区容错</td>
+</tr>
+<tr>
+<td align="center">CP</td>
+<td align="left">满足一致性和分区容错性，也就是说，要放弃可用性。当系统被分区，为了保证原子性，必须放弃可用性，让服务停用。</td>
+</tr>
+<tr>
+<td align="center">AP</td>
+<td align="left">满足可用性和分区容错性，当出现分区，同时为了保证可用性，即使数据未同步，也必须让节点继续对外服务，这样必然导致失去数据的一致性。</td>
+</tr>
+</tbody></table>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/cap-2.png" alt="taskImg"></p>
+<p>CAP原理指出这三个要素最多只能同时实现两点，不可能三者兼顾。</p>
+<h3 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a><font color=green>BASE理论</font></h3><p>因此在进行分布式架构设计时，必须做出取舍。而对于分布式数据系统，分区容忍性是基本要求，否则就失去了价值。因此设计分布式数据系统，就是在一致性和可用性之间取一个平衡。对于大多数web应用，其实并不需要强一致性，因此牺牲一致性而换取高可用性，是目前多数分布式产品的方向。</p>
+<p>当然，牺牲一致性，并不是完全不管数据的一致性，否则数据是混乱的，那么系统可用性再高分布式再好也没有了价值。牺牲一致性，只是不再要求关系型数据库中的强一致性，而是只要系统能达到最终一致性即可，考虑到客户体验，这个最终一致的时间窗口，要尽可能的对用户透明，也就是需要保障“用户感知到的一致性”。通常是通过数据的多份异步复制来实现系统的高可用和数据的最终一致性的，“用户感知到的一致性”的时间窗口则取决于数据复制到一致状态的时间</p>
+<p>因此，我们退而求其次，在C和A中进行权衡，最终形成了我们的BASE理论:</p>
+<ul>
+<li>Basically Available（基本可用）；</li>
+<li>Soft state（软状态）；</li>
+<li>Eventually consistent（最终一致性）；</li>
+</ul>
+<p>BASE定理的核心思想：即使无法做到强一致性，但是每个应用可以根据自身的业务特定，采用合适的方式来达到最终一致性。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/base.png" alt="taskImg"></p>
+<h4 id="Basically-Available（基本可用）"><a href="#Basically-Available（基本可用）" class="headerlink" title="Basically Available（基本可用）"></a><font color=green>Basically Available（基本可用）</font></h4><ol>
+<li>基本可用是指分布式系统在出现不可预知故障的时候，允许损失部分可用性。但是，这绝不等价于系统不可用。</li>
+<li>损失相应时间：CAP可用性的服务相应时间可能是10ms，而BASE基本可用性的相应时间1-2s，即允许损失部分可用性（时间上的损失）；</li>
+<li>损失系统功能：BASE的基本可用性是允许某个服务出现故障时，采用服务降级等手段保证用户的体验性，即允许损失部分系统功能；</li>
+</ol>
+<h4 id="Soft-state（软状态）"><a href="#Soft-state（软状态）" class="headerlink" title="Soft state（软状态）"></a><font color=green>Soft state（软状态）</font></h4><p>软状态指允许系统中的数据存在中间状态，并认为该中间状态的存在不会影响系统的整体可用性，即允许系统在不同节点的数据副本之间进行数据同步的过程存在延时。</p>
+<h4 id="Eventually-consistent（最终一致性）"><a href="#Eventually-consistent（最终一致性）" class="headerlink" title="Eventually consistent（最终一致性）"></a><font color=green>Eventually consistent（最终一致性）</font></h4><ol>
+<li>它和强一致性不一样，强一致性读操作要么处于阻塞状态，要么读到的是最新的数据；</li>
+<li>最终一致性强调的是系统中所有的数据副本，在经过一段时间的同步后，最终能够达到一个一致的状态。因此，最终一致性的本质是需要系统保证最终数据能够达到一致，而不需要实时保证系统数据的强一致性。</li>
+</ol>
+<h3 id="柔性事务和刚性事务"><a href="#柔性事务和刚性事务" class="headerlink" title="柔性事务和刚性事务"></a>柔性事务和刚性事务</h3><ul>
+<li><p>柔性事务满足BASE理论（基本可用，最终一致）</p>
+</li>
+<li><p>刚性事务满足ACID理论</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Sherly</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://sherry-02.github.io/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/">http://sherry-02.github.io/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://sherry-02.github.io" target="_blank">Sherly的奇幻漂流</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a><a class="post-meta__tags" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></div><div class="post_share"><div class="social-share" data-image="/userImg/gunner.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/"><img class="next-cover" data-lazy-src="/userImg/gunner.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">springboot定时任务异常引发的针对@Scheduled注解进行的原理分析</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/userImg/zmftl.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Sherly</div><div class="author-info__description">90后技术宅咸鱼一枚</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Sherry-02"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E8%BD%AC%E5%8F%98%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">事务的转变过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">事务理论知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ACID%E7%90%86%E8%AE%BA"><span class="toc-number">2.1.</span> <span class="toc-text">ACID理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAP%E7%90%86%E8%AE%BA"><span class="toc-number">2.2.</span> <span class="toc-text">CAP理论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%88Consistency%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">C:一致性（Consistency）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#A-%E5%8F%AF%E7%94%A8%E6%80%A7%EF%BC%88Availability%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">A:可用性（Availability）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#P-%E5%88%86%E5%8C%BA%E5%AE%B9%E9%94%99%E6%80%A7%EF%BC%88Partition-tolerance%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">P: 分区容错性（Partition tolerance）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CAP%E7%9A%84%E5%8F%96%E8%88%8D"><span class="toc-number">2.2.4.</span> <span class="toc-text">CAP的取舍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BASE%E7%90%86%E8%AE%BA"><span class="toc-number">2.3.</span> <span class="toc-text">BASE理论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Basically-Available%EF%BC%88%E5%9F%BA%E6%9C%AC%E5%8F%AF%E7%94%A8%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">Basically Available（基本可用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Soft-state%EF%BC%88%E8%BD%AF%E7%8A%B6%E6%80%81%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">Soft state（软状态）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Eventually-consistent%EF%BC%88%E6%9C%80%E7%BB%88%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%89"><span class="toc-number">2.3.3.</span> <span class="toc-text">Eventually consistent（最终一致性）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%94%E6%80%A7%E4%BA%8B%E5%8A%A1%E5%92%8C%E5%88%9A%E6%80%A7%E4%BA%8B%E5%8A%A1"><span class="toc-number">2.4.</span> <span class="toc-text">柔性事务和刚性事务</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" title="分布式事务概述"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分布式事务概述"/></a><div class="content"><a class="title" href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" title="分布式事务概述">分布式事务概述</a><time datetime="2023-02-18T08:12:16.000Z" title="发表于 2023-02-18 16:12:16">2023-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析"/></a><div class="content"><a class="title" href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析">springboot定时任务异常引发的针对@Scheduled注解进行的原理分析</a><time datetime="2021-06-16T08:12:16.000Z" title="发表于 2021-06-16 16:12:16">2021-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/15/springboot%E4%B8%8E%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" title="springboot与缓存相关信息"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="springboot与缓存相关信息"/></a><div class="content"><a class="title" href="/2021/04/15/springboot%E4%B8%8E%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" title="springboot与缓存相关信息">springboot与缓存相关信息</a><time datetime="2021-04-15T08:16:16.000Z" title="发表于 2021-04-15 16:16:16">2021-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/16/fegin%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8https%E6%8E%A5%E5%8F%A3%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="Feign调用外部https接口异常排查"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Feign调用外部https接口异常排查"/></a><div class="content"><a class="title" href="/2021/03/16/fegin%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8https%E6%8E%A5%E5%8F%A3%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="Feign调用外部https接口异常排查">Feign调用外部https接口异常排查</a><time datetime="2021-03-16T08:16:16.000Z" title="发表于 2021-03-16 16:16:16">2021-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="JAVA设计模式"><img data-lazy-src="/userImg/gjd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA设计模式"/></a><div class="content"><a class="title" href="/2020/11/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="JAVA设计模式">JAVA设计模式</a><time datetime="2020-11-09T08:16:16.000Z" title="发表于 2020-11-09 16:16:16">2020-11-09</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Sherly</div><div class="footer_custom_text">没有期待就没有失望，没有羁绊就不会受伤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'K0AK8xcgunvcAVV8QWL7CLX6-MdYXbMMI',
+      appKey: 'LTLOylDVrsVnzY2YFJDltYXd',
+      placeholder: '留下邮箱可以快速收到回复!\n昵称和邮箱必填\n邮箱建议输入QQ邮箱，会自动使用QQ头像',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: 'https://k0ak8xcg.api.lncldglobal.com',
+      emojiCDN: '//cdn.jsdelivr.net/gh/sherry-02/emotion/',
+      emojiMaps: {"tv_doge":"/bili_tv_gif/doge.gif","tv_亲亲":"/bili_tv_gif/亲亲.gif","tv_偷笑":"/bili_tv_gif/偷笑.gif","tv_再见":"/bili_tv_gif/再见.gif","tv_发怒":"/bili_tv_gif/发怒.gif","tv_发财":"/bili_tv_gif/发财.gif","tv_可爱":"/bili_tv_gif/可爱.gif","tv_吐血":"/bili_tv_gif/吐血.gif","tv_呆":"/bili_tv_gif/呆.gif","tv_呕吐":"/bili_tv_gif/呕吐.gif","tv_困":"/bili_tv_gif/困.gif","tv_坏笑":"/bili_tv_gif/坏笑.gif","tv_大佬":"/bili_tv_gif/大佬.gif","tv_大哭":"/bili_tv_gif/大哭.gif","tv_委屈":"/bili_tv_gif/委屈.gif","tv_害羞":"/bili_tv_gif/害羞.gif","tv_尴尬":"/bili_tv_gif/尴尬.gif","tv_微笑":"/bili_tv_gif/微笑.gif","tv_思考":"/bili_tv_gif/思考.gif","tv_惊吓":"/bili_tv_gif/惊吓.gif","tv_打脸":"/bili_tv_gif/打脸.gif","tv_抓狂":"/bili_tv_gif/抓狂.gif","tv_抠鼻":"/bili_tv_gif/抠鼻子.gif","tv_斜眼笑":"/bili_tv_gif/斜眼笑.gif","tv_无奈":"/bili_tv_gif/无奈.gif","tv_晕":"/bili_tv_gif/晕.gif","tv_流汗":"/bili_tv_gif/流汗.gif","tv_流鼻血":"/bili_tv_gif/流鼻血.gif","tv_点赞":"/bili_tv_gif/点赞.gif","tv_生气":"/bili_tv_gif/生气.gif","tv_生病":"/bili_tv_gif/生病.gif","tv_疑问":"/bili_tv_gif/疑问.gif","tv_白眼":"/bili_tv_gif/白眼.gif","tv_睡着":"/bili_tv_gif/睡着.gif","tv_笑哭":"/bili_tv_gif/笑哭.gif","tv_腼腆":"/bili_tv_gif/腼腆.gif","tv_色":"/bili_tv_gif/色.gif","tv_调皮":"/bili_tv_gif/调皮.gif","tv_鄙视":"/bili_tv_gif/鄙视.gif","tv_闭嘴":"/bili_tv_gif/闭嘴.gif","tv_难过":"/bili_tv_gif/难过.gif","tv_馋":"/bili_tv_gif/馋.gif","tv_黑人问号":"/bili_tv_gif/黑人问号.gif","tv_鼓掌":"/bili_tv_gif/鼓掌.gif","蛆音娘_die":"/bilibili/蛆音娘_die.png","蛆音娘_OK":"/bilibili/蛆音娘_OK.png","蛆音娘_吃瓜群众":"/bilibili/蛆音娘_吃瓜群众.png","蛆音娘_吃惊":"/bilibili/蛆音娘_吃惊.png","蛆音娘_大笑":"/bilibili/蛆音娘_大笑.png","蛆音娘_肥皂":"/bilibili/蛆音娘_肥皂.png","蛆音娘_扶额":"/bilibili/蛆音娘_扶额.png","蛆音娘_害怕":"/bilibili/蛆音娘_害怕.png","蛆音娘_哼":"/bilibili/蛆音娘_哼.png","蛆音娘_滑稽":"/bilibili/蛆音娘_滑稽.png","蛆音娘_机智":"/bilibili/蛆音娘_机智.png","蛆音娘_哭泣":"/bilibili/蛆音娘_哭泣.png","蛆音娘_卖萌":"/bilibili/蛆音娘_卖萌.png","蛆音娘_生气":"/bilibili/蛆音娘_生气.png","蛆音娘_睡觉觉":"/bilibili/蛆音娘_睡觉觉.png","蛆音娘_吐血":"/bilibili/蛆音娘_吐血.png","蛆音娘_偷看":"/bilibili/蛆音娘_偷看.png","蛆音娘_无语":"/bilibili/蛆音娘_无语.png","蛆音娘_摇头":"/bilibili/蛆音娘_摇头.png","蛆音娘_疑问":"/bilibili/蛆音娘_疑问.png","bqb_整一个":"/custom/22.webp","bqb_怀疑":"/custom/17.webp","bqb_夹":"/custom/24.webp","bqb_劈叉":"/custom/26.webp","bqb_踢屁股":"/custom/27.webp","bqb_戳脸":"/custom/9.webp","bqb_拽脸":"/custom/10.webp","bqb_太强了":"/custom/28.webp","bqb_无语":"/custom/29.webp","bqb_挠头":"/custom/30.gif","bqb_干":"/custom/21.webp","bqb_目瞪狗呆":"/custom/16.webp"},
+      enableQQ: true,
+      path: window.location.pathname,
+
+
+      
+      master: '34346947534ed6a4006b7c0baf419dba'.split(','),
+      friends: '6a4c2e55770704081f412587f9016fc7,b77074cd14ca2f6e6dde21ab63d78e43,ea343af228e97e5a7c7db68910847675'.split(','),
+      tagMeta: '博主,小伙伴,访客'.split(','),
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign({}, initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/gh/sherry-02/CDN/js/Valine-Lete3.2.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-id="3135521149" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/561e63ff.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: '561e63ff',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/violet.model.json"},"display":{"position":"right","vOffset":20},"mobile":{"show":false,"scale":0.2},"react":{"opacityDefault":0.3,"opacityOnHover":0.3,"opacity":0.95},"log":false});</script></body></html>
