@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://sherry-02.github.io/userImg/gunner.jpg">
 <meta property="article:published_time" content="2023-02-18T08:12:16.000Z">
-<meta property="article:modified_time" content="2023-02-20T07:50:51.216Z">
+<meta property="article:modified_time" content="2023-02-21T07:20:19.536Z">
 <meta property="article:author" content="Sherly">
 <meta property="article:tag" content="事务">
 <meta property="article:tag" content="分布式">
@@ -80,7 +80,7 @@ var saveToLocal = {
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-02-20 15:50:51'
+  postUpdate: '2023-02-21 15:20:19'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -145,7 +145,7 @@ if (asideStatus !== undefined) {
    } else {
      document.documentElement.classList.remove('hide-aside')
    }
-}})()</script><link rel="stylesheet" href="/userCss/flink.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/userImg/zmftl.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 分组</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/userImg/gunner.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Sherly的奇幻漂流</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 分组</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">分布式事务概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-18T08:12:16.000Z" title="发表于 2023-02-18 16:12:16">2023-02-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-20T07:50:51.216Z" title="更新于 2023-02-20 15:50:51">2023-02-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h2 id="事务的转变过程"><a href="#事务的转变过程" class="headerlink" title="事务的转变过程"></a>事务的转变过程</h2><p><strong>单点项目 - 单数据源事务</strong></p>
+}})()</script><link rel="stylesheet" href="/userCss/flink.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/userImg/zmftl.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 分组</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/userImg/gunner.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Sherly的奇幻漂流</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 分组</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">分布式事务概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-18T08:12:16.000Z" title="发表于 2023-02-18 16:12:16">2023-02-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-21T07:20:19.536Z" title="更新于 2023-02-21 15:20:19">2023-02-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>27分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h2 id="事务的转变过程"><a href="#事务的转变过程" class="headerlink" title="事务的转变过程"></a>事务的转变过程</h2><p><strong>单点项目 - 单数据源事务</strong></p>
 <p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/single.png" alt="taskImg"></p>
 <p>在单体项目中如果只有一个数据库是不存在分布式事务问题的，<br><font color=red>通过@Transactional事务管理器就可以管理单数据库事务</font></p>
 <p><strong>单点项目 - 多数据源事务</strong></p>
@@ -243,7 +243,324 @@ if (asideStatus !== undefined) {
 <li><p>刚性事务满足ACID理论</p>
 </li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Sherly</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://sherry-02.github.io/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/">http://sherry-02.github.io/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://sherry-02.github.io" target="_blank">Sherly的奇幻漂流</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a><a class="post-meta__tags" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></div><div class="post_share"><div class="social-share" data-image="/userImg/gunner.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/"><img class="next-cover" data-lazy-src="/userImg/gunner.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">springboot定时任务异常引发的针对@Scheduled注解进行的原理分析</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/userImg/zmftl.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Sherly</div><div class="author-info__description">90后技术宅咸鱼一枚</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Sherry-02"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E8%BD%AC%E5%8F%98%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">事务的转变过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">事务理论知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ACID%E7%90%86%E8%AE%BA"><span class="toc-number">2.1.</span> <span class="toc-text">ACID理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAP%E7%90%86%E8%AE%BA"><span class="toc-number">2.2.</span> <span class="toc-text">CAP理论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%88Consistency%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">C:一致性（Consistency）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#A-%E5%8F%AF%E7%94%A8%E6%80%A7%EF%BC%88Availability%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">A:可用性（Availability）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#P-%E5%88%86%E5%8C%BA%E5%AE%B9%E9%94%99%E6%80%A7%EF%BC%88Partition-tolerance%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">P: 分区容错性（Partition tolerance）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CAP%E7%9A%84%E5%8F%96%E8%88%8D"><span class="toc-number">2.2.4.</span> <span class="toc-text">CAP的取舍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BASE%E7%90%86%E8%AE%BA"><span class="toc-number">2.3.</span> <span class="toc-text">BASE理论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Basically-Available%EF%BC%88%E5%9F%BA%E6%9C%AC%E5%8F%AF%E7%94%A8%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">Basically Available（基本可用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Soft-state%EF%BC%88%E8%BD%AF%E7%8A%B6%E6%80%81%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">Soft state（软状态）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Eventually-consistent%EF%BC%88%E6%9C%80%E7%BB%88%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%89"><span class="toc-number">2.3.3.</span> <span class="toc-text">Eventually consistent（最终一致性）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%94%E6%80%A7%E4%BA%8B%E5%8A%A1%E5%92%8C%E5%88%9A%E6%80%A7%E4%BA%8B%E5%8A%A1"><span class="toc-number">2.4.</span> <span class="toc-text">柔性事务和刚性事务</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" title="分布式事务概述"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分布式事务概述"/></a><div class="content"><a class="title" href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" title="分布式事务概述">分布式事务概述</a><time datetime="2023-02-18T08:12:16.000Z" title="发表于 2023-02-18 16:12:16">2023-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析"/></a><div class="content"><a class="title" href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析">springboot定时任务异常引发的针对@Scheduled注解进行的原理分析</a><time datetime="2021-06-16T08:12:16.000Z" title="发表于 2021-06-16 16:12:16">2021-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/15/springboot%E4%B8%8E%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" title="springboot与缓存相关信息"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="springboot与缓存相关信息"/></a><div class="content"><a class="title" href="/2021/04/15/springboot%E4%B8%8E%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" title="springboot与缓存相关信息">springboot与缓存相关信息</a><time datetime="2021-04-15T08:16:16.000Z" title="发表于 2021-04-15 16:16:16">2021-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/16/fegin%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8https%E6%8E%A5%E5%8F%A3%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="Feign调用外部https接口异常排查"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Feign调用外部https接口异常排查"/></a><div class="content"><a class="title" href="/2021/03/16/fegin%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8https%E6%8E%A5%E5%8F%A3%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="Feign调用外部https接口异常排查">Feign调用外部https接口异常排查</a><time datetime="2021-03-16T08:16:16.000Z" title="发表于 2021-03-16 16:16:16">2021-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="JAVA设计模式"><img data-lazy-src="/userImg/gjd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA设计模式"/></a><div class="content"><a class="title" href="/2020/11/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="JAVA设计模式">JAVA设计模式</a><time datetime="2020-11-09T08:16:16.000Z" title="发表于 2020-11-09 16:16:16">2020-11-09</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Sherly</div><div class="footer_custom_text">没有期待就没有失望，没有羁绊就不会受伤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+<h3 id="分布式事务的解决方案"><a href="#分布式事务的解决方案" class="headerlink" title="分布式事务的解决方案"></a>分布式事务的解决方案</h3><p>在分布式架构下，每个节点只知晓自己操作的失败或者成功，无法得知其他节点的状态。当一个事务跨多个节点时，为了保持事务的原子性与一致性，而引入一个协调者来统一掌控所有参与者的操作结果，并指示它们是否要把操作结果进行真正的提交或者回滚（rollback）。</p>
+<h3 id="2阶段提交（2PC）"><a href="#2阶段提交（2PC）" class="headerlink" title="2阶段提交（2PC）"></a>2阶段提交（2PC）</h3><p>二阶段提交协议（Two-phase Commit，即 2PC）是常用的分布式事务解决方案，即将事务的提交过程分为两个阶段来进行处理。</p>
+<p>两个阶段分别为：</p>
+<ul>
+<li>准备阶段</li>
+<li>提交阶段</li>
+</ul>
+<p>参与的角色：</p>
+<ul>
+<li>事务协调者（事务管理器TM）：事务的发起者</li>
+<li>事务参与者（资源管理器RM）：事务的执行者</li>
+</ul>
+<h4 id="准备阶段（投票阶段）"><a href="#准备阶段（投票阶段）" class="headerlink" title="准备阶段（投票阶段）"></a>准备阶段（投票阶段）</h4><p>这是两阶段的第一段，这一阶段只是准备阶段，由事务的协调者发起询问参与者是否可以提交事务，但是这一阶段并未提交事务，流程图如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/2pc-1.png" alt="taskImg"></p>
+<ol>
+<li>协调者向所有参与者发送事务内容，询问是否可以提交事务，并等待答复</li>
+<li>各参与者执行事务操作，将 undo 和 redo 信息记入事务日志中（但不提交事务）</li>
+<li>如参与者执行成功，给协调者反馈同意，否则反馈中止</li>
+</ol>
+<h4 id="提交阶段"><a href="#提交阶段" class="headerlink" title="提交阶段"></a>提交阶段</h4><p>这一段阶段属于2PC的第二阶段（提交/执行阶段），协调者发起正式提交事务的请求，当所有参与者都回复同意时，则意味着完成事务，流程图如下：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/2pc-2.png" alt="taskImg"></p>
+<ol>
+<li>协调者节点向所有参与者节点发出<strong>正式提交</strong>(<font color=red>commit</font>)的请求。</li>
+<li>参与者节点正式完成操作，并释放在整个事务期间内占用的资源。</li>
+<li>参与者节点向协调者节点发送<strong>ack完成</strong>消息。</li>
+<li>协调者节点收到所有参与者节点反馈的<strong>ack完成</strong>消息后，完成事务。</li>
+</ol>
+<p>但是如果任意一个参与者节点在<strong>第一阶段</strong>返回的消息为<em>终止</em>，或者协调者节点在第一阶段的询问超时之前无法获取所有参与者节点的响应消息时，那么这个事务将会被回滚，回滚的流程图如下：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/2pc-3.png" alt="taskImg"></p>
+<ol>
+<li>协调者节点向所有参与者节点发出<strong>回滚操作</strong>(<font color=red>rollback</font>)的请求。</li>
+<li>参与者节点利用阶段1写入的undo信息执行回滚，并释放在整个事务期间内占用的资源。</li>
+<li>参与者节点向协调者节点发送<strong>ack回滚</strong>完成消息。</li>
+<li>协调者节点受到所有参与者节点反馈的<strong>ack回滚</strong>完成消息后，取消事务。</li>
+</ol>
+<p><strong>不管最后结果如何，第二阶段都会结束当前事务。</strong></p>
+<p>二阶段提交的<strong>事务正常提交</strong>的完整流程如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/2pc-4.png" alt="taskImg"></p>
+<p>二阶段提交<strong>事务回滚</strong>的完整流程如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/2pc-5.png" alt="taskImg"></p>
+<p>举个百米赛跑的例子来具体描述下2PC的流程：学校运动会，有三个同学，分别是A，B，C，2PC流程如下：</p>
+<ul>
+<li>裁判：A同学准备好了吗？准备进入第一赛道….</li>
+<li>裁判：B同学准备好了吗？准备进入第一赛道….</li>
+<li>裁判：C同学准备好了吗？准备进入第一赛道….</li>
+<li>如果有任意一个同学没准备好，则裁判下达回滚指令</li>
+<li>如果裁判收到了所有同学的OK回复，则再次下令跑……</li>
+<li>裁判：1,2,3 跑…………</li>
+<li>A同学冲刺到终点，汇报给裁判</li>
+<li>B，C同学冲刺失败，汇报给裁判</li>
+</ul>
+<h4 id="2PC的缺点"><a href="#2PC的缺点" class="headerlink" title="2PC的缺点"></a>2PC的缺点</h4><p>二阶段提交看起来确实能够提供原子性的操作，但是不幸的是，二阶段提交还是有几个缺点的：</p>
+<ul>
+<li>性能问题：执行过程中，所有参与节点都是事务阻塞型的。当参与者占有公共资源时，其他第三方节点访问公共资源不得不处于阻塞状态。</li>
+<li>可靠性问题：参与者发生故障。协调者需要给每个参与者额外指定超时机制，超时后整个事务失败。协调者发生故障。参与者会一直阻塞下去。需要额外的备机进行容错。</li>
+<li>数据一致性问题：二阶段无法解决的问题：协调者在发出commit消息之后宕机，而唯一接收到这条消息的参与者同时也宕机了。那么即使协调者通过选举协议产生了新的协调者，这条事务的状态也是不确定的，没人知道事务是否被已经提交。</li>
+<li>实现复杂：牺牲了可用性，对性能影响较大，不适合高并发高性能场景。</li>
+</ul>
+<h4 id="2PC的优点"><a href="#2PC的优点" class="headerlink" title="2PC的优点"></a>2PC的优点</h4><ul>
+<li>尽量保证了数据的强一致，适合对数据强一致要求很高的关键领域。（其实也不能100%保证强一致）</li>
+</ul>
+<h3 id="3阶段提交（3PC）"><a href="#3阶段提交（3PC）" class="headerlink" title="3阶段提交（3PC）"></a>3阶段提交（3PC）</h3><p>三阶段提交协议，是二阶段提交协议的改进版本，三阶段提交有两个改动点。</p>
+<ul>
+<li>在协调者和参与者中都引入超时机制</li>
+<li>在第一阶段和第二阶段中插入一个准备阶段。保证了在最后提交阶段之前各参与节点的状态是一致的。</li>
+</ul>
+<p>也就是说，除了引入超时机制之外，3PC把2PC的准备阶段再次一分为二，这样三阶段提交就有<font color=red>CanCommit</font>、<font color=red>PreCommit</font>、<font color=red>DoCommit</font>三个阶段。处理流程如下：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/3pc-1.png" alt="taskImg"></p>
+<h4 id="阶段一：CanCommit阶段"><a href="#阶段一：CanCommit阶段" class="headerlink" title="阶段一：CanCommit阶段"></a>阶段一：CanCommit阶段</h4><p>3PC的<font color=red>CanCommit</font>阶段其实和2PC的准备阶段很像。协调者向参与者发送<font color=red>commit</font>请求，参与者如果可以提交就返回Yes响应，否则返回No响应。</p>
+<ul>
+<li>事务询问：协调者向所有参与者发出包含事务内容的<font color=red>canCommit</font> 请求，询问是否可以提交事务，并等待所有参与者答复。</li>
+<li>响应反馈：参与者收到<font color=red>canCommit</font>请求后，如果认为可以执行事务操作，则反馈 yes 并进入预备状态，否则反馈 no。</li>
+</ul>
+<p>CanCommit阶段流程如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/3pc-2.png" alt="taskImg"></p>
+<h4 id="阶段二：PreCommit阶段"><a href="#阶段二：PreCommit阶段" class="headerlink" title="阶段二：PreCommit阶段"></a>阶段二：PreCommit阶段</h4><p>协调者根据参与者的反应情况来决定是否可以进行事务的<font color=red>PreCommit</font>操作。根据响应情况，有以下两种可能。</p>
+<ul>
+<li>假如所有参与者均反馈 yes，协调者预执行事务。</li>
+</ul>
+<ol>
+<li>发送预提交请求 ：协调者向参与者发送<font color=red>PreCommit</font>请求，并进入准备阶段</li>
+<li>事务预提交 ：参与者接收到<font color=red>PreCommit</font>请求后，会执行事务操作，并将<font color=red>undo</font>和<font color=red>redo</font>信息记录到事务日志中（但不提交事务）</li>
+<li>响应反馈 ：如果参与者成功的执行了事务操作，则返回<em>ACK</em>响应，同时开始等待最终指令。</li>
+</ol>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/3pc-3.png" alt="taskImg"></p>
+<ul>
+<li>假如有任何一个参与者向协调者发送了No响应，或者等待超时之后，协调者都没有接到参与者的响应，那么就执行事务的中断。</li>
+</ul>
+<ol>
+<li>发送中断请求 ：协调者向所有参与者发送<font color=red>abort</font>请求。</li>
+<li>中断事务 ：参与者收到来自协调者的<font color=red>abort</font>请求之后（或超时之后，仍未收到协调者的请求），执行事务的中断。</li>
+</ol>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/3pc-4.png" alt="taskImg"></p>
+<h4 id="阶段三：doCommit阶段"><a href="#阶段三：doCommit阶段" class="headerlink" title="阶段三：doCommit阶段"></a>阶段三：doCommit阶段</h4><p>该阶段进行真正的事务提交，也可以分为以下两种情况。</p>
+<p>进入阶段3后，无论协调者出现问题，或者协调者与参与者网络出现问题，都会导致参与者无法接收到协调者发出的<font color=red>doCommit</font>请求或<font color=red>abort</font>请求。此时，参与者都会在等待超时之后，继续执行事务提交。</p>
+<ul>
+<li><strong>执行提交</strong></li>
+</ul>
+<ol>
+<li>发送提交请求  协调接收到参与者发送的ACK响应，那么他将从预提交状态进入到提交状态。并向所有参与者发送<font color=red>doCommit</font>请求。</li>
+<li>事务提交  参与者接收到<font color=red>doCommit</font>请求之后，执行正式的事务提交。并在完成事务提交之后释放所有事务资源。</li>
+<li>响应反馈  事务提交完之后，向协调者发送ack响应。</li>
+<li>完成事务  协调者接收到所有参与者的ack响应之后，完成事务。</li>
+</ol>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/3pc-5.png" alt="taskImg"></p>
+<ul>
+<li><strong>中断事务</strong>：任何一个参与者反馈no，或者等待超时后协调者尚无法收到所有参与者的反馈，即中断事务</li>
+</ul>
+<ol>
+<li>发送中断请求  如果协调者处于工作状态，向所有参与者发出<font color=red>abort</font>请求</li>
+<li>事务回滚  参与者接收到<font color=red>abort</font>请求之后，利用其在阶段二记录的<font color=red>undo</font>信息来执行事务的回滚操作，并在完成回滚之后释放所有的事务资源。</li>
+<li>反馈结果  参与者完成事务回滚之后，向协调者反馈<font color=red>ACK</font>消息</li>
+<li>中断事务  协调者接收到参与者反馈的<font color=red>ACK</font>消息之后，执行事务的中断。</li>
+</ol>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/3pc-6.png" alt="taskImg"></p>
+<h4 id="3PC优点"><a href="#3PC优点" class="headerlink" title="3PC优点"></a>3PC优点</h4><p>相比二阶段提交，三阶段提交降低了阻塞范围，在等待超时后协调者或参与者会中断事务。避免了协调者单点问题，阶段3中协调者出现问题时，参与者会继续提交事务。</p>
+<h4 id="3PC缺点"><a href="#3PC缺点" class="headerlink" title="3PC缺点"></a>3PC缺点</h4><p>数据不一致问题依然存在，当在参与者收到<font color=red>preCommit</font>请求后等待<font color=red>doCommit</font>指令时，此时如果协调者请求中断事务，而协调者无法与参与者正常通信，会导致参与者继续提交事务，造成数据不一致。</p>
+<h3 id="TCC-事务补偿"><a href="#TCC-事务补偿" class="headerlink" title="TCC(事务补偿)"></a>TCC(事务补偿)</h3><p>TCC（Try Confirm Cancel）方案是一种应用层面侵入业务的两阶段提交。是目前最火的一种柔性事务方案，其核心思想是：<strong>针对每个操作，都要注册一个与其对应的确认和补偿（撤销）操作。</strong></p>
+<p>TCC分为两个阶段，分别如下：</p>
+<ul>
+<li>第一阶段：Try（尝试），主要是对业务系统做检测及资源预留 (加锁，锁住资源)</li>
+<li>第二阶段：本阶段根据第一阶段的结果，决定是执行confirm还是cancel<br></li>
+</ul>
+<ol>
+<li>Confirm（确认）：执行真正的业务（执行业务，释放锁）<br></li>
+<li>Cancle（取消）：是预留资源的取消（出问题，释放锁）</li>
+</ol>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/tcc-1.png" alt="taskImg"></p>
+<p>为了方便理解，下面以电商下单为例进行方案解析，这里把整个过程简单分为扣减库存，订单创建 2 个步骤，库存服务和订单服务分别在不同的服务器节点上。</p>
+<p>假设商品库存为 100，购买数量为 2，这里检查和更新库存的同时，冻结用户购买数量的库存，同时创建订单，订单状态为待确认。</p>
+<h4 id="阶段一：Try阶段"><a href="#阶段一：Try阶段" class="headerlink" title="阶段一：Try阶段"></a>阶段一：Try阶段</h4><p>TCC 机制中的 Try 仅是一个初步操作，它和后续的确认一起才能真正构成一个完整的业务逻辑，这个阶段主要完成：</p>
+<ul>
+<li>完成所有业务检查( 一致性 ) 。</li>
+<li>预留必须业务资源( 准隔离性 ) 。</li>
+<li>Try 尝试执行业务。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/tcc-2.png" alt="taskImg"></p>
+<h4 id="阶段二：Confirm-Cancel阶段"><a href="#阶段二：Confirm-Cancel阶段" class="headerlink" title="阶段二：Confirm/Cancel阶段"></a>阶段二：Confirm/Cancel阶段</h4><p>根据 Try 阶段服务是否全部正常执行，继续执行确认操作（Confirm）或取消操作（Cancel）。<br>Confirm 和 Cancel 操作满足幂等性，如果 Confirm 或 Cancel 操作执行失败，将会不断重试直到执行完成。</p>
+<p>Confirm：当 Try 阶段服务全部正常执行， 执行确认业务逻辑操作，业务如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/tcc-3.png" alt="taskImg"></p>
+<p>这里使用的资源一定是 Try 阶段预留的业务资源。在 TCC 事务机制中认为，如果在 Try 阶段能正常的预留资源，那 Confirm 一定能完整正确的提交。</p>
+<p>Confirm 阶段也可以看成是对 Try 阶段的一个补充，Try+Confirm 一起组成了一个完整的业务逻辑。</p>
+<p>Cancel：当 Try 阶段存在服务执行失败， 进入 Cancel 阶段，业务如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/tcc-4.png" alt="taskImg"></p>
+<h4 id="最终一致性保证"><a href="#最终一致性保证" class="headerlink" title="最终一致性保证"></a>最终一致性保证</h4><ul>
+<li>TCC 事务机制以初步操作（Try）为中心的，确认操作（Confirm）和取消操作（Cancel）都是围绕初步操作（Try）而展开。因此，Try 阶段中的操作，其保障性是最好的，即使失败，仍然有取消操作（Cancel）可以将其执行结果撤销。</li>
+<li>Try阶段执行成功并开始执行 Confirm阶段时，默认 Confirm阶段是不会出错的。也就是说只要Try成功，Confirm一定成功（TCC设计之初的定义） 。</li>
+<li>Confirm与Cancel如果失败，由TCC框架进行==重试==补偿</li>
+<li>存在极低概率在CC环节彻底失败，则需要定时任务或人工介入</li>
+</ul>
+<h4 id="TCC优点"><a href="#TCC优点" class="headerlink" title="TCC优点"></a>TCC优点</h4><p>TCC 事务机制相对于传统事务机制（X/Open XA），TCC 事务机制相比于上面介绍的 XA 事务机制，有以下优点：</p>
+<ul>
+<li>性能提升：具体业务来实现控制资源锁的粒度变小，不会锁定整个资源。</li>
+<li>数据最终一致性：基于 Confirm 和 Cancel 的幂等性，保证事务最终完成确认或者取消，保证数据的一致性。</li>
+<li>可靠性：解决了 XA 协议的协调者单点故障问题，由主业务方发起并控制整个业务活动，业务活动管理器也变成多点，引入集群。</li>
+</ul>
+<h4 id="TCC缺点"><a href="#TCC缺点" class="headerlink" title="TCC缺点"></a>TCC缺点</h4><ul>
+<li>TCC 的 Try、Confirm 和 Cancel 操作功能要按具体业务来实现，业务耦合度较高，提高了开发成本。</li>
+</ul>
+<h3 id="本地消息表"><a href="#本地消息表" class="headerlink" title="本地消息表"></a>本地消息表</h3><h4 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h4><p>本地消息表的方案最初是由 eBay 提出，核心思路是将分布式事务拆分成本地事务进行处理。</p>
+<p>角色：</p>
+<ul>
+<li>事务主动方</li>
+<li>事务被动方</li>
+</ul>
+<p>通过在事务主动发起方额外新建事务消息表，事务发起方处理业务和记录事务消息在本地事务中完成，轮询事务消息表的数据发送事务消息，事务被动方基于消息中间件消费事务消息表中的事务。<br>这样可以避免以下两种情况导致的数据不一致性：</p>
+<ul>
+<li>业务处理成功、事务消息发送失败</li>
+<li>业务处理失败、事务消息发送成功</li>
+</ul>
+<p>整体的流程如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/localmsg.png" alt="taskImg"></p>
+<p>上图中整体的处理步骤如下：</p>
+<ul>
+<li>①：事务主动方在同一个本地事务中处理业务和写消息表操作</li>
+<li>②：事务主动方通过消息中间件，通知事务被动方处理事务通知事务待消息。消息中间件可以基于 Kafka、RocketMQ 消息队列，事务主动方主动写消息到消息队列，事务消费方消费并处理消息队列中的消息。</li>
+<li>③：事务被动方通过消息中间件，通知事务主动方事务已处理的消息。</li>
+<li>④：事务主动方接收中间件的消息，更新消息表的状态为已处理。</li>
+</ul>
+<p>一些必要的容错处理如下：</p>
+<ul>
+<li>当①处理出错，由于还在事务主动方的本地事务中，直接回滚即可</li>
+<li>当②、③处理出错，由于事务主动方本地保存了消息，只需要轮询消息重新通过消息中间件发送，事务被动方重新读取消息处理业务即可。</li>
+<li>如果是业务上处理失败，事务被动方可以发消息给事务主动方回滚事务</li>
+<li>如果事务被动方已经消费了消息，事务主动方需要回滚事务的话，需要发消息通知事务主动方进行回滚事务。</li>
+</ul>
+<h4 id="本地消息表优点"><a href="#本地消息表优点" class="headerlink" title="本地消息表优点"></a>本地消息表优点</h4><ul>
+<li>从应用设计开发的角度实现了消息数据的可靠性，消息数据的可靠性不依赖于消息中间件，弱化了对 MQ 中间件特性的依赖。</li>
+<li>方案轻量，容易实现。</li>
+</ul>
+<h4 id="本地消息表缺点"><a href="#本地消息表缺点" class="headerlink" title="本地消息表缺点"></a>本地消息表缺点</h4><ul>
+<li>与具体的业务场景绑定，耦合性强，不可公用。</li>
+<li>消息数据与业务数据同库，占用业务系统资源。</li>
+<li>业务系统在使用关系型数据库的情况下，消息服务性能会受到关系型数据库并发性能的局限。</li>
+</ul>
+<h3 id="MQ事务方案（可靠消息事务）"><a href="#MQ事务方案（可靠消息事务）" class="headerlink" title="MQ事务方案（可靠消息事务）"></a>MQ事务方案（可靠消息事务）</h3><p>基于 MQ 的分布式事务方案其实是对本地消息表的封装，将本地消息表基于 MQ 内部，其他方面的协议基本与本地消息表一致。</p>
+<h4 id="具体方案-1"><a href="#具体方案-1" class="headerlink" title="具体方案"></a>具体方案</h4><p>MQ事务方案整体流程和本地消息表的流程很相似，如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/mq-1.png" alt="taskImg"></p>
+<p>从上图可以看出和本地消息表方案唯一不同就是将本地消息表存在了MQ内部，而不是业务数据库中。</p>
+<p>那么MQ内部的处理尤为重要，下面主要基于 RocketMQ 4.3 之后的版本介绍 MQ 的分布式事务方案。</p>
+<p>在本地消息表方案中，保证事务主动方发写业务表数据和写消息表数据的一致性是基于数据库事务，RocketMQ 的事务消息相对于普通 MQ提供了 2PC 的提交接口，方案如下：</p>
+<p><strong>正常情况：事务主动方发消息</strong></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/mq-2.png" alt="taskImg"></p>
+<p>这种情况下，事务主动方服务正常，没有发生故障，发消息流程如下：</p>
+<ul>
+<li>步骤①：发送方向 MQ 服务端(MQ Server)发送 half 消息。</li>
+<li>步骤②：MQ Server 将消息持久化成功之后，向发送方 ack 确认消息已经发送成功。</li>
+<li>步骤③：发送方开始执行本地事务逻辑。</li>
+<li>步骤④：发送方根据本地事务执行结果向 MQ Server 提交二次确认（commit 或是 rollback）。</li>
+<li>步骤⑤：MQ Server 收到 commit 状态则将半消息标记为可投递，订阅方最终将收到该消息；MQ Server 收到 rollback 状态则删除半消息，订阅方将不会接受该消息。</li>
+</ul>
+<p><strong>异常情况：事务主动方消息恢复</strong></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/mq-3.png" alt="taskImg"></p>
+<p>在断网或者应用重启等异常情况下，图中 4 提交的二次确认超时未到达 MQ Server，此时处理逻辑如下：</p>
+<ul>
+<li>步骤⑤：MQ Server 对该消息发起消息回查。</li>
+<li>步骤⑥：发送方收到消息回查后，需要检查对应消息的本地事务执行的最终结果。</li>
+<li>步骤⑦：发送方根据检查得到的本地事务的最终状态再次提交二次确认。</li>
+<li>步骤⑧：MQ Server基于 commit/rollback 对消息进行投递或者删除。</li>
+</ul>
+<h4 id="MQ事务方案优点"><a href="#MQ事务方案优点" class="headerlink" title="MQ事务方案优点"></a>MQ事务方案优点</h4><p>相比本地消息表方案，MQ 事务方案优点是：</p>
+<ul>
+<li>消息数据独立存储 ，降低业务系统与消息系统之间的耦合。</li>
+<li>吞吐量大于使用本地消息表方案。</li>
+</ul>
+<h4 id="MQ事务方案缺点"><a href="#MQ事务方案缺点" class="headerlink" title="MQ事务方案缺点"></a>MQ事务方案缺点</h4><ul>
+<li>一次消息发送需要两次网络请求(half 消息 + commit/rollback 消息) 。</li>
+<li>业务处理服务需要实现消息状态回查接口。</li>
+</ul>
+<h3 id="最大努力通知"><a href="#最大努力通知" class="headerlink" title="最大努力通知"></a>最大努力通知</h3><p>最大努力通知也称为定期校对，是对MQ事务方案的进一步优化。它在事务主动方增加了消息校对的接口，如果事务被动方没有接收到消息，此时可以调用事务主动方提供的消息校对的接口主动获取。</p>
+<p>最大努力通知的整体流程如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/zdnltz.png" alt="taskImg"></p>
+<p>在可靠消息事务中，事务主动方需要将消息发送出去，并且消息接收方成功接收，这种可靠性发送是由事务主动方保证的；</p>
+<p>但是最大努力通知，事务主动方尽最大努力（重试，轮询….）将事务发送给事务接收方，但是仍然存在消息接收不到，此时需要事务被动方主动调用事务主动方的消息校对接口查询业务消息并消费，这种通知的可靠性是由事务被动方保证的。</p>
+<p>最大努力通知适用于业务通知类型，例如微信交易的结果，就是通过最大努力通知方式通知各个商户，既有回调通知，也有交易查询接口。</p>
+<h3 id="Saga事务"><a href="#Saga事务" class="headerlink" title="Saga事务"></a>Saga事务</h3><p>Saga 事务源于 1987 年普林斯顿大学的 Hecto 和 Kenneth 发表的如何处理 long lived transaction（长活事务）论文。</p>
+<p>Saga 事务核心思想是将长事务拆分为多个本地短事务，由 Saga 事务协调器协调，如果正常结束那就正常完成，如果某个步骤失败，则根据相反顺序一次调用补偿操作。</p>
+<p>Saga 事务基本协议如下：</p>
+<ul>
+<li>每个 Saga 事务由一系列幂等的有序子事务(sub-transaction) Ti 组成。</li>
+<li>每个 Ti 都有对应的幂等补偿动作 Ci，补偿动作用于撤销 Ti 造成的结果。<br>TCC事务补偿机制有一个预留(Try)动作，相当于先报存一个草稿，然后才提交；Saga事务没有预留动作，直接提交。</li>
+</ul>
+<p>对于事务异常，Saga提供了两种恢复策略，分别如下：</p>
+<p><strong>向后恢复(backward recovery)</strong></p>
+<p>在执行事务失败时，补偿所有已完成的事务，是“一退到底”的方式。如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/saga-1.png" alt="taskImg"></p>
+<p>从上图可知事务执行到了支付事务T3，但是失败了，因此事务回滚需要从C3,C2,C1依次进行回滚补偿。</p>
+<p>对应的执行顺序为：T1,T2,T3,C3,C2,C1</p>
+<p>这种做法的效果是撤销掉之前所有成功的子事务，使得整个 Saga 的执行结果撤销。</p>
+<p><strong>向前恢复(forward recovery)</strong></p>
+<p>也称之为：勇往直前，对于执行不通过的事务，会尝试重试事务，这里有一个假设就是每个子事务最终都会成功。  流程如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/saga-2.png" alt="taskImg"></p>
+<p>适用于必须要成功的场景，事务失败了重试，不需要补偿。</p>
+<p>Saga事务有两种不同的实现方式，分别如下：</p>
+<ul>
+<li>命令协调（Order Orchestrator）</li>
+<li>事件编排（Event Choreographyo）</li>
+</ul>
+<h4 id="命令协调"><a href="#命令协调" class="headerlink" title="命令协调"></a>命令协调</h4><p>中央协调器（Orchestrator，简称 OSO）以命令/回复的方式与每项服务进行通信，全权负责告诉每个参与者该做什么以及什么时候该做什么。整体流程如下图：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/saga-3.png" alt="taskImg"></p>
+<p>上图步骤如下：</p>
+<ul>
+<li>事务发起方的主业务逻辑请求 OSO 服务开启订单事务</li>
+<li>OSO 向库存服务请求扣减库存，库存服务回复处理结果。</li>
+<li>OSO 向订单服务请求创建订单，订单服务回复创建结果。</li>
+<li>OSO 向支付服务请求支付，支付服务回复处理结果。</li>
+<li>主业务逻辑接收并处理 OSO 事务处理结果回复。</li>
+</ul>
+<p>中央协调器必须事先知道执行整个订单事务所需的流程(例如通过读取配置)。如果有任何失败，它还负责通过向每个参与者发送命令来撤销之前的操作来协调分布式的回滚。</p>
+<p>基于中央协调器协调一切时，回滚要容易得多，因为协调器默认是执行正向流程，回滚时只要执行反向流程即可。</p>
+<h4 id="事件编排"><a href="#事件编排" class="headerlink" title="事件编排"></a>事件编排</h4><p>没有中央协调器（没有单点风险）时，每个服务产生并观察其他服务的事件，并决定是否应采取行动。</p>
+<p>在事件编排方法中，第一个服务执行一个事务，然后发布一个事件。该事件被一个或多个服务进行监听，这些服务再执行本地事务并发布（或不发布）新的事件。</p>
+<p>当最后一个服务执行本地事务并且不发布任何事件时，意味着分布式事务结束，或者它发布的事件没有被任何 Saga 参与者听到都意味着事务结束。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://cdn.jsdelivr.net/gh/sherry-02/CDN/blogSource/blogImg/20230218/saga-4.png" alt="taskImg"></p>
+<p>上图步骤如下：</p>
+<ul>
+<li>事务发起方的主业务逻辑发布开始订单事件。</li>
+<li>库存服务监听开始订单事件，扣减库存，并发布库存已扣减事件。</li>
+<li>订单服务监听库存已扣减事件，创建订单，并发布订单已创建事件。</li>
+<li>支付服务监听订单已创建事件，进行支付，并发布订单已支付事件。</li>
+<li>主业务逻辑监听订单已支付事件并处理。</li>
+</ul>
+<p>事件编排是实现Saga模式的自然方式，它很简单，容易理解，不需要太多的代码来构建。如果事务涉及 2 至 4 个步骤，则可能是非常合适的。</p>
+<h4 id="Saga事务优点"><a href="#Saga事务优点" class="headerlink" title="Saga事务优点"></a>Saga事务优点</h4><p>命令协调设计的优点如下：</p>
+<ul>
+<li>服务之间关系简单，避免服务之间的循环依赖关系，因为Saga协调器会调用Saga参与者，但参与者不会调用协调器。</li>
+<li>程序开发简单，只需要执行命令/回复(其实回复消息也是一种事件消息)，降低参与者的复杂性。</li>
+<li>易维护扩展，在添加新步骤时，事务复杂性保持线性，回滚更容易管理，更容易实施和测试。</li>
+</ul>
+<p>事件/编排设计优点如下：</p>
+<ul>
+<li>避免中央协调器单点故障风险。</li>
+<li>当涉及的步骤较少服务开发简单，容易实现。</li>
+</ul>
+<h4 id="Saga事务缺点"><a href="#Saga事务缺点" class="headerlink" title="Saga事务缺点"></a>Saga事务缺点</h4><p>命令协调设计缺点如下：</p>
+<ul>
+<li>中央协调器容易处理逻辑容易过于复杂，导致难以维护。</li>
+<li>存在协调器单点故障风险。</li>
+</ul>
+<p>事件/编排设计缺点如下：</p>
+<ul>
+<li>服务之间存在循环依赖的风险。</li>
+<li>当涉及的步骤较多，服务间关系混乱，难以追踪调测。</li>
+</ul>
+<p><strong>由于Saga模型中没有<font color=red>Prepare</font>阶段，因此事务间不能保证隔离性。</strong></p>
+<p>当多个 Saga 事务操作同一资源时，就会产生更新丢失、脏数据读取等问题，这时需要在业务层控制并发，例如：在应用层面加锁，或者应用层面预先冻结资源。</p>
+<h3 id="事务解决方案总结"><a href="#事务解决方案总结" class="headerlink" title="事务解决方案总结"></a><font color=red>事务解决方案总结</font></h3><p>总结一下各个方案的常见的使用场景：</p>
+<ul>
+<li><p>2PC/3PC：依赖于数据库，能够很好的提供强一致性和强事务性，但相对来说延迟比较高，比较适合传统的单体应用，在同一个方法中存在跨库操作的情况，不适合高并发和高性能要求的场景。</p>
+</li>
+<li><p>TCC：适用于执行时间确定且较短，实时性要求高，对数据一致性要求高，比如互联网金融企业最核心的三个服务：交易、支付、账务。</p>
+</li>
+<li><p>本地消息表/MQ 事务：都适用于事务中参与方支持操作幂等，对一致性要求不高，业务上能容忍数据不一致到一个人工检查周期，事务涉及的参与方、参与环节较少，业务上有对账/校验系统兜底。</p>
+</li>
+<li><p>Saga 事务：由于 Saga 事务不能保证隔离性，需要在业务层控制并发，适合于业务场景事务并发操作同一资源较少的情况。Saga 相比缺少预提交动作，导致补偿动作的实现比较麻烦，例如业务是发送短信，补偿动作则得再发送一次短信说明撤销，用户体验比较差。Saga 事务较适用于补偿动作容易处理的场景。</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Sherly</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://sherry-02.github.io/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/">http://sherry-02.github.io/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://sherry-02.github.io" target="_blank">Sherly的奇幻漂流</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a><a class="post-meta__tags" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></div><div class="post_share"><div class="social-share" data-image="/userImg/gunner.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/"><img class="next-cover" data-lazy-src="/userImg/gunner.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">springboot定时任务异常引发的针对@Scheduled注解进行的原理分析</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/userImg/zmftl.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Sherly</div><div class="author-info__description">90后技术宅咸鱼一枚</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Sherry-02"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E8%BD%AC%E5%8F%98%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">事务的转变过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">事务理论知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ACID%E7%90%86%E8%AE%BA"><span class="toc-number">2.1.</span> <span class="toc-text">ACID理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAP%E7%90%86%E8%AE%BA"><span class="toc-number">2.2.</span> <span class="toc-text">CAP理论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%88Consistency%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">C:一致性（Consistency）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#A-%E5%8F%AF%E7%94%A8%E6%80%A7%EF%BC%88Availability%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">A:可用性（Availability）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#P-%E5%88%86%E5%8C%BA%E5%AE%B9%E9%94%99%E6%80%A7%EF%BC%88Partition-tolerance%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">P: 分区容错性（Partition tolerance）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CAP%E7%9A%84%E5%8F%96%E8%88%8D"><span class="toc-number">2.2.4.</span> <span class="toc-text">CAP的取舍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BASE%E7%90%86%E8%AE%BA"><span class="toc-number">2.3.</span> <span class="toc-text">BASE理论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Basically-Available%EF%BC%88%E5%9F%BA%E6%9C%AC%E5%8F%AF%E7%94%A8%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">Basically Available（基本可用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Soft-state%EF%BC%88%E8%BD%AF%E7%8A%B6%E6%80%81%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">Soft state（软状态）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Eventually-consistent%EF%BC%88%E6%9C%80%E7%BB%88%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%89"><span class="toc-number">2.3.3.</span> <span class="toc-text">Eventually consistent（最终一致性）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%94%E6%80%A7%E4%BA%8B%E5%8A%A1%E5%92%8C%E5%88%9A%E6%80%A7%E4%BA%8B%E5%8A%A1"><span class="toc-number">2.4.</span> <span class="toc-text">柔性事务和刚性事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">2.5.</span> <span class="toc-text">分布式事务的解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4%EF%BC%882PC%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">2阶段提交（2PC）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5%EF%BC%88%E6%8A%95%E7%A5%A8%E9%98%B6%E6%AE%B5%EF%BC%89"><span class="toc-number">2.6.1.</span> <span class="toc-text">准备阶段（投票阶段）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E9%98%B6%E6%AE%B5"><span class="toc-number">2.6.2.</span> <span class="toc-text">提交阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2PC%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">2.6.3.</span> <span class="toc-text">2PC的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2PC%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">2.6.4.</span> <span class="toc-text">2PC的优点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4%EF%BC%883PC%EF%BC%89"><span class="toc-number">2.7.</span> <span class="toc-text">3阶段提交（3PC）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9ACanCommit%E9%98%B6%E6%AE%B5"><span class="toc-number">2.7.1.</span> <span class="toc-text">阶段一：CanCommit阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%BA%8C%EF%BC%9APreCommit%E9%98%B6%E6%AE%B5"><span class="toc-number">2.7.2.</span> <span class="toc-text">阶段二：PreCommit阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%89%EF%BC%9AdoCommit%E9%98%B6%E6%AE%B5"><span class="toc-number">2.7.3.</span> <span class="toc-text">阶段三：doCommit阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3PC%E4%BC%98%E7%82%B9"><span class="toc-number">2.7.4.</span> <span class="toc-text">3PC优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3PC%E7%BC%BA%E7%82%B9"><span class="toc-number">2.7.5.</span> <span class="toc-text">3PC缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCC-%E4%BA%8B%E5%8A%A1%E8%A1%A5%E5%81%BF"><span class="toc-number">2.8.</span> <span class="toc-text">TCC(事务补偿)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9ATry%E9%98%B6%E6%AE%B5"><span class="toc-number">2.8.1.</span> <span class="toc-text">阶段一：Try阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%BA%8C%EF%BC%9AConfirm-Cancel%E9%98%B6%E6%AE%B5"><span class="toc-number">2.8.2.</span> <span class="toc-text">阶段二：Confirm&#x2F;Cancel阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E4%B8%80%E8%87%B4%E6%80%A7%E4%BF%9D%E8%AF%81"><span class="toc-number">2.8.3.</span> <span class="toc-text">最终一致性保证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCC%E4%BC%98%E7%82%B9"><span class="toc-number">2.8.4.</span> <span class="toc-text">TCC优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TCC%E7%BC%BA%E7%82%B9"><span class="toc-number">2.8.5.</span> <span class="toc-text">TCC缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8"><span class="toc-number">2.9.</span> <span class="toc-text">本地消息表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%96%B9%E6%A1%88"><span class="toc-number">2.9.1.</span> <span class="toc-text">具体方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E4%BC%98%E7%82%B9"><span class="toc-number">2.9.2.</span> <span class="toc-text">本地消息表优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E7%BC%BA%E7%82%B9"><span class="toc-number">2.9.3.</span> <span class="toc-text">本地消息表缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MQ%E4%BA%8B%E5%8A%A1%E6%96%B9%E6%A1%88%EF%BC%88%E5%8F%AF%E9%9D%A0%E6%B6%88%E6%81%AF%E4%BA%8B%E5%8A%A1%EF%BC%89"><span class="toc-number">2.10.</span> <span class="toc-text">MQ事务方案（可靠消息事务）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%96%B9%E6%A1%88-1"><span class="toc-number">2.10.1.</span> <span class="toc-text">具体方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MQ%E4%BA%8B%E5%8A%A1%E6%96%B9%E6%A1%88%E4%BC%98%E7%82%B9"><span class="toc-number">2.10.2.</span> <span class="toc-text">MQ事务方案优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MQ%E4%BA%8B%E5%8A%A1%E6%96%B9%E6%A1%88%E7%BC%BA%E7%82%B9"><span class="toc-number">2.10.3.</span> <span class="toc-text">MQ事务方案缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8A%AA%E5%8A%9B%E9%80%9A%E7%9F%A5"><span class="toc-number">2.11.</span> <span class="toc-text">最大努力通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Saga%E4%BA%8B%E5%8A%A1"><span class="toc-number">2.12.</span> <span class="toc-text">Saga事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%8D%8F%E8%B0%83"><span class="toc-number">2.12.1.</span> <span class="toc-text">命令协调</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%BC%96%E6%8E%92"><span class="toc-number">2.12.2.</span> <span class="toc-text">事件编排</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Saga%E4%BA%8B%E5%8A%A1%E4%BC%98%E7%82%B9"><span class="toc-number">2.12.3.</span> <span class="toc-text">Saga事务优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Saga%E4%BA%8B%E5%8A%A1%E7%BC%BA%E7%82%B9"><span class="toc-number">2.12.4.</span> <span class="toc-text">Saga事务缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93"><span class="toc-number">2.13.</span> <span class="toc-text">事务解决方案总结</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" title="分布式事务概述"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分布式事务概述"/></a><div class="content"><a class="title" href="/2023/02/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A6%82%E8%BF%B0/" title="分布式事务概述">分布式事务概述</a><time datetime="2023-02-18T08:12:16.000Z" title="发表于 2023-02-18 16:12:16">2023-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析"/></a><div class="content"><a class="title" href="/2021/06/16/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="springboot定时任务异常引发的针对@Scheduled注解进行的原理分析">springboot定时任务异常引发的针对@Scheduled注解进行的原理分析</a><time datetime="2021-06-16T08:12:16.000Z" title="发表于 2021-06-16 16:12:16">2021-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/15/springboot%E4%B8%8E%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" title="springboot与缓存相关信息"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="springboot与缓存相关信息"/></a><div class="content"><a class="title" href="/2021/04/15/springboot%E4%B8%8E%E7%BC%93%E5%AD%98%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" title="springboot与缓存相关信息">springboot与缓存相关信息</a><time datetime="2021-04-15T08:16:16.000Z" title="发表于 2021-04-15 16:16:16">2021-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/16/fegin%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8https%E6%8E%A5%E5%8F%A3%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="Feign调用外部https接口异常排查"><img data-lazy-src="/userImg/gunner.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Feign调用外部https接口异常排查"/></a><div class="content"><a class="title" href="/2021/03/16/fegin%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8https%E6%8E%A5%E5%8F%A3%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5/" title="Feign调用外部https接口异常排查">Feign调用外部https接口异常排查</a><time datetime="2021-03-16T08:16:16.000Z" title="发表于 2021-03-16 16:16:16">2021-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="JAVA设计模式"><img data-lazy-src="/userImg/gjd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA设计模式"/></a><div class="content"><a class="title" href="/2020/11/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="JAVA设计模式">JAVA设计模式</a><time datetime="2020-11-09T08:16:16.000Z" title="发表于 2020-11-09 16:16:16">2020-11-09</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Sherly</div><div class="footer_custom_text">没有期待就没有失望，没有羁绊就不会受伤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
  <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
